@@ -1,6 +1,14 @@
-# coding=UTF-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
+import os
+from os import environ as env
+from sys import argv
+
+import bottle
 from bottle import route, run, template, request, error, static_file
+
+bottle.debug(True)
 
 frett_1_listi = ["Kreml reynir að þvo tilræðismennina af Pútín",
                "Yfirvöld í Kreml fullyrða að tveir menn sem bresk stjórnvöld saka um að hafa reynt að myrða rússneskan fyrrverandi njósnara í mars hafi ekkert með Vladímír Pútín forseta eða ríkisstjórnina að gera. Breska ríkisstjórnin hefur sagt að Pútín hafi sjálfur gefið skipun um tilræðið og að mennirnir tveir vinni fyrir rússnesku herleyniþjónustuna GRU. Mennirnir tveir sem bresk yfirvöld hafa ákært fyrir að hafa eitrað fyrir Sergei Skrípal og dóttur hans Júlíu með taugaeitrinu Novichok í bænum Salisbury á Englandi í mars eru sagðir heita Alexander Petrov og Ruslan Bosjirov. Talsmaður ríkisstjórnar Pútín sagði Interfax-fréttastofunni að hvorugur mannanna tengdist Pútín eða Kreml á nokkurn hátt í dag. Rússnesk stjórnvöld hafa alfarið hafnað því að hafa komið nálægt tilræðinu. Pútín sagði sjálfur að mennirnir tveir væru óbreyttir borgarar í síðustu viku. Tvímenningarnir veittu RT-sjónvarpsstöðinni sem rússneska ríkið styrkir viðtal í vikunni. Þar sögðust þeir vera saklausir ferðamenn sem hafi heimsótt Salisbury til að skemmta sér og að sjá dómkirkjuna þar. Bresk yfirvöld segja hins vegar að leifar af taugaeitrinu hafi fundist á hótelherbergi mannanna í London.",
@@ -52,5 +60,4 @@ def static_skrar(skra, sida=1):
 def error404(error):
     return 'Nothing here, sorry'
 
-if __name__ == "__main__":
-    run(debug=True)
+bottle.run(host='0.0.0.0', port=argv[1])
